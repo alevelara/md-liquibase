@@ -1,0 +1,15 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="backendTeam" id="GMO-CAPABILITIES-1-CREATING-TABLE" runInTransaction="false">
+        <createTable tableName="CAPABILITIES">
+            <column name="id" autoIncrement="true" type="INT">
+                <constraints primaryKey="true" primaryKeyName="PK_CAPABILITY"/>
+            </column>
+            <column name="COMMAND_ID" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <property name="now" value="now()" dbms="mssql"/>
+    <property name="systemUser" value="system"/>
+
+    <!-- API Version 1 -->
+    <include file="gmocore-1/db.changelog-ddl.xml" relativeToChangelogFile="true"/>
+    <include file="gmocore-2/db.changelog-data.xml" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>

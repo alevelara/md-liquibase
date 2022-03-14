@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder ignore-unresolvable="true" order="2"/>
+
+    <bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase">
+        <property name="dataSource" ref="liquibaseDataSource"/>
+        <property name="changeLog" value="classpath:changelog/db.changelog-master.xml"/>
+        <property name="dropFirst" value="false"/>
+        <property name="ignoreClasspathPrefix" value="true"/>
+    </bean>
+
+    <!-- DataSource  -->
+    <bean id="liquibaseDataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close"
+          p:driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+          p:url="${GMO_DB_URL}"
+          p:username="${GMO_USERNAME}"
+          p:password="${GMO_PASSWORD}"
+          p:defaultAutoCommit="true">
+    </bean>
+
+</beans>

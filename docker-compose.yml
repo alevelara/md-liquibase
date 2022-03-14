@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+
+  liquibase:
+    build:
+      context: .
+      dockerfile: config/docker/liquibase/Dockerfile
+    networks:
+      - mssql-network
+    env_file:
+      - env-files/gmo.env
+
+networks:
+  mssql-network:
+    driver: bridge
